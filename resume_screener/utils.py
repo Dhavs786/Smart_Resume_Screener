@@ -3,6 +3,17 @@ os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
 from sentence_transformers import SentenceTransformer
 import re
 import nltk
+
+# Download required NLTK components for cloud server environments
+for resource in ['punkt', 'punkt_tab', 'stopwords', 'wordnet']:
+    try:
+        if resource.startswith('punkt'):
+            nltk.data.find(f'tokenizers/{resource}')
+        else:
+            nltk.data.find(f'corpora/{resource}')
+    except LookupError:
+        nltk.download(resource, quiet=True)
+
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
