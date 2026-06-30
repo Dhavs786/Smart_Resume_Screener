@@ -260,20 +260,21 @@ with st.sidebar:
     
     # LLM Settings (Automatic backend detection, no UI selector/input)
     api_provider = "Groq"
-    api_key = ""
+    api_key = os.environ.get("GROQ_API_KEY", "")
     
-    # Auto-detect Groq key in local api.txt file
-    api_paths = ["api.txt", "../api.txt", "resume_screener/api.txt"]
-    for path in api_paths:
-        if os.path.exists(path):
-            try:
-                with open(path, "r") as f:
-                    k = f.read().strip()
-                    if k:
-                        api_key = k
-                        break
-            except Exception as e:
-                pass
+    # Auto-detect Groq key in local api.txt file if env var is empty
+    if not api_key:
+        api_paths = ["api.txt", "../api.txt", "resume_screener/api.txt"]
+        for path in api_paths:
+            if os.path.exists(path):
+                try:
+                    with open(path, "r") as f:
+                        k = f.read().strip()
+                        if k:
+                            api_key = k
+                            break
+                except Exception as e:
+                    pass
                 
     if api_key:
         st.markdown("""
