@@ -1,0 +1,26 @@
+# API Keys and Secrets
+api.txt
+*api.txt
+secrets.toml
+.env
+
+# SQLite Database and User Resumes
+*.db
+*.sqlite
+resume_screener/resumes/
+resume_screener/models/
+
+# Python Cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.venv/
+venv/
+env/
+.env/
+
+# OS Files
+.DS_Store
+Thumbs.db

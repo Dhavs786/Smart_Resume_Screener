@@ -1,0 +1,24 @@
+# Version control
+.git
+.gitignore
+
+# Python caches and virtual environments
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+env/
+.env
+
+# Database and user uploaded keys/files
+talent_screener.db
+api.txt
+resumes/
+models/
+.streamlit/config.toml
+
+# OS Files
+.DS_Store
+Thumbs.db
